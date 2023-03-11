@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>verilogExample</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.sveditor.core.SVProjectBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.sveditor.core.SVNature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>External SV Files</name>
+			<type>2</type>
+			<locationURI>svext://verilogExample</locationURI>
+		</link>
+	</linkedResources>
+	<variableList>
+		<variable>
+			<name>SOURCE</name>
+			<value>$%7BPROJECT_LOC%7D/source</value>
+		</variable>
+		<variable>
+			<name>TEST</name>
+			<value>$%7BPROJECT_LOC%7D/test</value>
+		</variable>
+	</variableList>
+</projectDescription>
