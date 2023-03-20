@@ -1,5 +1,5 @@
-`define TRUE  1'b1
-`define FALSE 1'b0
+`define True  1'b1
+`define False 1'b0
 
 `define TrueNegative 1'b0
 `define FalseNegative 1'b1

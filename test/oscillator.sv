@@ -14,7 +14,7 @@ module  oscillator #(PERIOD) (
 	
 	`include "defines.v"
 	
-	//`define TRUE = 1
+	//`define True = 1
 	
 	`define PERIOD = 100 // 1 MHz Clock 
 	
@@ -30,7 +30,7 @@ module  oscillator #(PERIOD) (
 	
 	always @(*) begin
 		
-		if (power == `TRUE) begin
+		if (power == `True) begin
 		
 			clock = osc; end
 		else begin
