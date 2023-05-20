@@ -7,9 +7,19 @@
  * 
  * TODO: Add module documentation
  */
-module testBench;
+module testBench(
+);
 
-always_ff @(posedge clk or negedge reset_n) begin
+oscillator osc(
+	.power(1'b1),
+	.clock(clock)
+);
+
+assign reset_n = 1'b1;
+
+reg flop;
+
+always_ff @(posedge clock or negedge reset_n) begin
 	if (!reset_n)  begin
 		flop <= 1'b0;
 	end

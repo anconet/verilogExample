@@ -7,7 +7,8 @@
  * 
  * TODO: Add module documentation
  */
-module  oscillator #(PERIOD) (
+
+module  oscillator #(HALF_PERIOD) (
 		input wire power,
 		output reg clock
 		);
@@ -16,21 +17,24 @@ module  oscillator #(PERIOD) (
 	
 	//`define True = 1
 	
-	`define PERIOD = 100 // 1 MHz Clock 
+	`define HALF_PERIOD = 50 // 1 MHz Clock 
 	
+	reg osc;
+
+
 	initial begin 
 
 		osc = 1'b0;
 		
 		forever begin
 			
-			osc = #PERIOD ~osc;
+			osc = #HALF_PERIOD ~osc;
 		end
 	end
 	
 	always @(*) begin
 		
-		if (power == `True) begin
+		if (power == `ActiveLow) begin
 		
 			clock = osc; end
 		else begin
