@@ -1,4 +1,4 @@
-work/*
-*.vcd
-transcript*
-*.wlf
+/simulation/work
+/simulation/*.vcd
+/simulation/transcript
+/simulation/*.wlf

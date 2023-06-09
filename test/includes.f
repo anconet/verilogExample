@@ -1,7 +1,7 @@
 /**
  * Filelist: includes.f
  */
-${TEST}/defines.v
+../test/defines.v
 ${TEST}/oscillator.sv
 ${TEST}/testBench.sv
 

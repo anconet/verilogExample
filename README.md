@@ -67,7 +67,7 @@ Here is the most basic Simulation:
 # exit is a simulator command
 vsim -c -do "echo Hello World; exit;"
 ```
-
+Create a work library
 ```bash
 # create the Work directory for complied libraries
 vlib work
@@ -94,13 +94,15 @@ Create a vsim run file:
 ```bash
 # Command Line Mode
 -c 
-# Something
+# Vsim OTPimization ARGumentS is set to all ACCess.
+# May need to change this in the future if simulations are slow.
 -voptargs="+acc"
 # The compiled toplevel file in the work library
 -do
 work.testBench
 # Commands for in the simulator.
 ```
+Run the simulation
 ```bash
 vsim -f simulation.f
 ```
