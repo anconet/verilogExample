@@ -2,8 +2,8 @@
 An example project using System Verilog for the Test Bench and Verilog for RTL.
 
 ## Todo
-- Linting with VS Code
-- Wave .do files
+- (done) Wave .do files
+    - How do I open up an existing simulation?
 - Getting Multiple Modules to run.
     - vlog
         - How are `defines handled?
@@ -14,6 +14,8 @@ An example project using System Verilog for the Test Bench and Verilog for RTL.
     vsim
         - How do I pull in my files from the library?
     - referencing files from a .f file.
+- Linting with VS Code
+
 ---
 ## Quartus Install
 Download the Quartus Lite linux tar file from Intel.
@@ -87,12 +89,12 @@ Here is the most basic Simulation:
 # exit is a simulator command
 vsim -c -do "echo Hello World; exit;"
 ```
-Create a work library
+### Create a work library
 ```bash
 # create the Work directory for complied libraries
 vlib work
 ```
-Create a file script file for compiling the project:
+### Create a file script file for compiling the project:
 
 `touch compile.f`
 ```bash
@@ -104,11 +106,11 @@ Create a file script file for compiling the project:
 ./test/testBench.sv
 ./test/oscillator.sv
 ```
-Run the compile:
+### Run the compile:
 ```bash
 vlog -f compile.f
 ```
-Create a vsim run file:
+### Create a vsim run file:
 
 `touch simulation.f`
 ```bash
@@ -118,12 +120,64 @@ Create a vsim run file:
 # May need to change this in the future if simulations are slow.
 -voptargs="+acc"
 # The compiled toplevel file in the work library
--do
+-do "add wave -r *;run -all; exit"
 work.testBench
 # Commands for in the simulator.
 ```
-Run the simulation
+### Run the simulation
 ```bash
 vsim -f simulation.f
 ```
+
+### View the Waveforms
+Note, to get the data for the waveform view you have to create a .vcd (Value Change Dump) file in your testbench.
+
+`testBench.v`
+```verilog
+
+module testbench();
+...
+   initial begin
+     $dumpfile("testBench.vcd");
+     $dumpvars(0,testBench);
+   end
+...
+endmodule
+```
+Note: You can generally get the .vcd file to .wlf by running `vcd2wlf <file.vcd> <file.wlf>`. But this is more of a scripting trick.
+
+
+From the bash command line
+```bash
+vsim -view vsim.wlf -do "add wave -r *;"
+vsim -view vsim.wlf -do wavesToView.do
+# or
+vsim -f viewWaveforms.f # Which contains the -view and -wavesToView.do
+```
+Or from inside vsim
+```bash
+dataset oepn vsim.wlf;
+add wave -r *;
+
+# OR to add just waves from just a module instance
+add wave osc/*
+
+# OR from a file that you have ordered exactly the way you like. :)
+do wavesToView.do
+
+# To remove waves
+delete wave *
+```
+A waves .do file
+
+`touch exampleWavesToView.do`
+```bash
+# Create an expandable group
+add wave -noupdate -group -expand SYSTEM
+add wave -noupdate -group SYSTEM clock
+add wave -noupdate -group SYSTEM reset
+add wave -noupdate -group SYSTEM powerRail3P3
+```
+
+
 
