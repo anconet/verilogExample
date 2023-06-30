@@ -1,6 +1,19 @@
 # verilogExample
 An example project using System Verilog for the Test Bench and Verilog for RTL.
 
+## Todo
+- Linting with VS Code
+- Wave .do files
+- Getting Multiple Modules to run.
+    - vlog
+        - How are `defines handled?
+        - How are includes handled?
+            - Do I need them?
+        - Can I use a .f file to create a manifest?
+            - Do I even need a manifest?
+    vsim
+        - How do I pull in my files from the library?
+    - referencing files from a .f file.
 ---
 ## Quartus Install
 Download the Quartus Lite linux tar file from Intel.
@@ -55,6 +68,13 @@ quartus &
 ## Questa
 vsim &
 ```
+
+### For running vsim under WSL
+There is this a Welcome Popup that shows up. This popup seems to hang vsim if the popup is on a different monitor then the main vsim window. And you can't disable the Welcome Popup because everything is hung. So here is my workaround:
+- start vsim with any ol command line script. For example 
+`vsim -do simulation.f` This will fire up vsim without the welcome screen.
+- Go to Help/Welcome in the GUI. On the Welcome Popup click "Don't Show This Dialog Again".
+- Happy Happy...
 ---
 ## Doing Sims from the Command Line
 A useful link for Questa command line: https://vhdlwhiz.com/the-modelsim-commands-you-need-to-know/

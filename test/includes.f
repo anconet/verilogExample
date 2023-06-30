@@ -1,7 +1,5 @@
-/**
- * Filelist: includes.f
- */
-../test/defines.v
-${TEST}/oscillator.sv
-${TEST}/testBench.sv
+// Include File
+$test/defines.v
+oscillator.sv
+testBench.sv
 

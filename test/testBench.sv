@@ -7,7 +7,7 @@
  * 
  * TODO: Add module documentation
  */
-`timescale 1ns/1ps
+//`timescale 1ns/100ps
 
 module testBench(
 );
@@ -26,16 +26,11 @@ initial begin
 	something = 1'b0;
 	#50 something = 1'b1;
 	#100 something = 1'b0;
-		
+
 		forever begin
 			
 			something = #50 ~something;
 		end
-	end
-
-initial begin
-	#1_000_000;
-	$stop;	
 	end
 
 initial begin
@@ -45,12 +40,23 @@ initial begin
 	end
 end
 
-/*
+initial begin
+	#1_000_000;
+	$stop;	
+	end
+
+reg powerRail3P3V;
+
+initial begin
+	powerRail3P3V = 1'b0;
+	#1_000 powerRail3P3V = 1'b1;
+end
 oscillator osc(
-	.power(1'b1),
+	.power(powerRail3P3V),
 	.clock(clock)
 );
 
+/*
 assign reset_n = 1'b1;
 
 reg flop;

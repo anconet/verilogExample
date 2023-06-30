@@ -34,12 +34,8 @@ module  oscillator (
 	
 	always @(*) begin
 		
-		if (power == `ActiveLow) begin
-		
-			clock = osc; end
-		else begin
-			clock = 1'bx;
-		end
+		if (power === 1'b1) begin clock = osc; end
+		else begin clock = 1'bx; end
 	
 	end
 		
