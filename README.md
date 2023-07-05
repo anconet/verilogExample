@@ -2,8 +2,6 @@
 An example project using System Verilog for the Test Bench and Verilog for RTL.
 
 ## Todo
-- (done) Wave .do files
-    - How do I open up an existing simulation?
 - Getting Multiple Modules to run.
     - vlog
         - How are `defines handled?
@@ -15,7 +13,8 @@ An example project using System Verilog for the Test Bench and Verilog for RTL.
         - How do I pull in my files from the library?
     - referencing files from a .f file.
 - Linting with VS Code
-
+## FAQ
+- How do I open an existing simulation? [Answer](#view-the-waveforms)
 ---
 ## Quartus Install
 Download the Quartus Lite linux tar file from Intel.
